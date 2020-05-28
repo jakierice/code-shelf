@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-function App() {
+const App = () => {
+  const [codeSnippet, setCodeSnippet] = React.useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <textarea
+        value={codeSnippet}
+        onChange={(e: any) => {
+          setCodeSnippet(e.target.value);
+        }}
+      />
+      <SyntaxHighlighter language="jsx" style={atomDark}>
+        {codeSnippet}
+      </SyntaxHighlighter>
+    </>
   );
-}
+};
 
 export default App;
